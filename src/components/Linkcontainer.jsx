@@ -25,18 +25,31 @@ const Linkcontainer = () => {
     const copyLinkedInURL = () => {
         navigator.clipboard.writeText(LinkedInURL);
         setRedirectToLinkedin(true);
+        setTimeout(() => {
+            setRedirectToLinkedin(false);
+        }, 3000);
+        
     }
     const copyInstaURL = () => {
         navigator.clipboard.writeText(InstaURL);
         setRedirectToInstagram(true);
+        setTimeout(() => {
+            setRedirectToInstagram(false);
+        }, 3000);
     }
     const copyTwitterURL = () => {
         navigator.clipboard.writeText(TwitterURL);
         setRedirectToTwitter(true);
+        setTimeout(() => {
+            setRedirectToTwitter(false);
+        }, 3000);
     }
     const copyGithubURL = () => {
         navigator.clipboard.writeText(GithubURL);
         setRedirectToGithub(true);
+        setTimeout(() => {
+            setRedirectToGithub(false);
+        }, 3000);
     }
 
 
