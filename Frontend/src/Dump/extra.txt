@@ -1,0 +1,171 @@
+ return (
+        <div className='h-[30rem] w-[20rem] bg-slate-300 rounded-xl flex flex-wrap justify-start gap-0 content-start relative shadow-2xl'>
+            <div className='bg-white h-[4.5rem] w-[4.5rem] flex justify-center items-center rounded-md m-[1.2rem] mt-[1.5rem]  shadow-md hover:shadow-xl cursor-pointer' onClick={redirectToLinkedin ? redirectLinkedInURL : copyLinkedInURL} >
+                <img src={linkedin} alt="" className='h-[2.5rem] w-[2.5rem] shadow-xl ' />
+            </div>
+            <div className='bg-white h-[4.5rem] w-[4.5rem] flex justify-center items-center rounded-md m-[1rem] mt-[1.5rem] shadow-md hover:shadow-xl cursor-pointer' onClick={redirectToGithub ? redirectGithubURL : copyGithubURL} >
+                <img src={github} alt="" className='h-[2.5rem] w-[2.5rem] ' />
+            </div>
+            <div className='bg-white h-[4.5rem] w-[4.5rem] flex justify-center items-center rounded-md m-[1rem] mt-[1.5rem] shadow-md hover:shadow-xl cursor-pointer' onClick={redirectToInstagram ? redirectInstaURL : copyInstaURL} >
+                <img src={instagram} alt="" className='h-[2.5rem] w-[2.5rem] ' />
+            </div>
+            <div className='bg-white h-[4.5rem] w-[4.5rem] flex justify-center items-center rounded-md m-[1.2rem] mt-[1.5rem] shadow-md hover:shadow-xl cursor-pointer' onClick={redirectToTwitter ? redirectTwitterURL : copyTwitterURL} >
+                <img src={twitter} alt="" className='h-[2.5rem] w-[2.5rem] ' />
+            </div>
+            <div className='bg-white h-[4.5rem] w-[4.5rem] flex justify-center items-center rounded-md m-[1rem] mt-[1.5rem] shadow-md hover:shadow-xl cursor-pointer'>
+                <img src={AddMore} alt="" className='h-[2.5rem] w-[2.5rem]' onClick={handlePopupbox}/>
+            </div>
+            <div className='border-[1px] w-[17rem] border-black h-[0.1rem] absolute bottom-[3.3rem] left-[1.5rem] ' ></div>
+            <div className='h-[5rem] w-[20rem] mt-[7rem] ml-[1rem] mr-[1rem] p-1'>
+                <pre className='font-medium'>
+                    1. Tap once to copy the URL to <br />   your clipboard.
+                </pre>
+                <pre className='font-medium' >
+                    2. Tap twice to visit the URL.
+                </pre>
+            </div>
+
+            <span className='font-extrabold absolute text-2xl bottom-[0.8rem] right-[7.5rem]'  >LYNKIE</span>
+            <Addpopup />
+        </div>
+    )
+
+    const handlePopupbox = () => {
+        setPopupbox(!popubox);
+    }
+
+
+
+
+
+
+
+            const cardinfo = [
+        { image: linkedin, statement: redirectToLinkedin, functioncopy: copyLinkedInURL, functionredirect: redirectLinkedInURL },
+        { image: github, statement: redirectToGithub, functioncopy: copyGithubURL, functionredirect: redirectGithubURL },
+        { image: instagram, statement: redirectToInstagram, functioncopy: copyInstaURL, functionredirect: redirectInstaURL },
+        { image: twitter, statement: redirectToTwitter, functioncopy: copyTwitterURL, functionredirect: redirectTwitterURL }
+    ]
+
+
+        const handleSubmit = (e) => {
+        cardinfo.push({ image: image, statement: facts, functioncopy: handleCopyToUrl(url), functionredirect: handleRedirectToUrl(url), title: url }
+        );
+    }
+ const handleSubmit = (e) => {
+        cardinfo.push({ image: image, statement: facts, functioncopy:  facts ? "" : handleCopyToUrl(url), functionredirect:  facts ? handleRedirectToUrl(url) : "", title: url }
+        );
+    }
+
+     return (
+        <div className='bg-white h-[4.5rem] w-[4.5rem] flex justify-center items-center rounded-md m-[1rem] mt-[1.5rem]  shadow-md hover:shadow-xl cursor-pointer' onClick={ props.statement ? props.functionredirect : props.functioncopy } >
+            <img src={props.image} alt="Linkedin Logo" className='h-[2.5rem] w-[2.5rem] shadow-xl' title={props.title} />
+        </div>
+    )
+
+    const handleSubmit = (e) => {
+        cardinfo.push({ image: image, statement: facts, functioncopy: handleCopyToUrl(url), functionredirect: handleRedirectToUrl(url), title: url}
+        );
+    }
+
+    const handleSubmit = (e) => {
+        cardinfo.push({ image: image, title: url }
+        );
+        let lastElem = cardinfo[cardinfo.length-1];
+        lastElem.addEventListener('click', handleCopyToUrl(lastElem.title));
+    }
+
+    <React.StrictMode>
+  </React.StrictMode>
+
+
+
+  "////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  
+import React, { useContext, useState } from 'react'
+import Upload from "../assets/images/Upload_image.png"
+import { popupcontext } from '../contexts/popupcontext'
+import linkedin from "../assets/images/linkedin.png"
+
+
+const Addpopup = () => {
+    const [facts, setFacts] = useState(false);
+
+    const { popupbox, setPopupbox, image, setImage, url, setUrl, pic, setPic, cardinfo, setCardinfo, redirectToLinkedin, redirectLinkedInURL, copyLinkedInURL } = useContext(popupcontext);
+    const handlePopupbox = () => {
+        setPopupbox(!popupbox);
+        setImage("");
+        setUrl("");
+    }
+
+
+    const handleimagechange = (event) => {
+        const file = event.target.files[0];
+        setImage(URL.createObjectURL(file));
+        setPic(URL.createObjectURL(file));
+    }
+
+
+    const handleUrl = (e) => {
+        setUrl(e.target.value);
+        // console.log(url);
+
+    }
+    const handleCopyToUrl = (e) => {
+        // if (!facts) {
+        // }
+        let target = e.target;
+        const title = target.getAttribute('title');
+        console.log("Copying");
+        // let lastElem = cardinfo[cardinfo.length-1];
+        // const fixedurl = lastElem.title;
+        navigator.clipboard.writeText(title);
+    }
+
+    const handleRedirectToUrl = (url) => {
+        // if (facts) {
+        // }
+        console.log("redirecting");
+        let lastElem = cardinfo[cardinfo.length-1];
+        location.href = lastElem.title;
+        // setFacts(false);
+
+    }
+
+    const handleSubmit = (e) => {
+        cardinfo.push({ image: image, title: url, functioncopy: handleCopyToUrl }
+        );
+        let lastElem = cardinfo[cardinfo.length-1];
+        console.log(lastElem);
+    }
+
+
+
+    if (popupbox) {
+        return (
+            <div className='w-[100vw] h-[100vh] fixed top-0 right-0 left-0 bottom-0'>
+                <div className='w-[100vw] h-[100vh] fixed top-0 right-0 left-0 bottom-0 bg-[#e3e3e3] bg-opacity-50 flex items-center justify-center z-10'>
+                    <div className="bg-white h-[14rem] w-[16rem] rounded-lg flex items-center flex-col z-20">
+                        <label htmlFor='imageonly' className='border-2  h-[7rem] w-[15rem] border-grey-100 flex justify-center items-center border-t-0 border-l-0 border-r-0 pointer-events-auto cursor-pointer'>
+                            <div className='w-[5rem] h-[5rem] border-rose-100 border-2 rounded-xl'>
+                                {image ? (<img src={image} alt="Upload your social image" className='w-[5rem] h-[5rem]' />) : (<img src={Upload} alt="Upload your social image" className='w-[5rem] h-[5rem] object-cover' />)}
+                                <input type="file" id='imageonly' className='hidden' accept=".png, .jpg, .jpeg" onChange={handleimagechange} />
+                            </div>
+                        </label>
+                        <input type="search" value={url} onChange={handleUrl} className='border-2 rounded-md w-[14rem] mt-[1rem] border-green-200 placeholder:italic placeholder:text-slate-400  hover:border-green-300' placeholder='         Paste your Link here!' />
+                        <div className="flex gap-[2.5rem] pl-[2rem] pr-[2rem] pb-[1rem] pt-[1rem]">
+                            <button className='w-[5rem] h-[2rem] bg-[#a1bbdf] hover:bg-slate-400 rounded-lg text-white' onClick={handlePopupbox}>Cancel</button>
+                            <button className='w-[5rem] h-[2rem] bg-[#892be2a2] hover:bg-[#8A2BE2] rounded-lg text-white' onClick={() => { handlePopupbox(); handleSubmit(); }}>Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
+
+export default Addpopup
+
+  
+  "////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
