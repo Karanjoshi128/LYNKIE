@@ -2,6 +2,7 @@ import { createContext, useState } from "react";
 import instagram from "../assets/images/instagram.png"
 import github from "../assets/images/github.png"
 import twitter from "../assets/images/twitter.png"
+import X from "../assets/images/X.png"
 import linkedin from "../assets/images/linkedin.png"
 
 export const popupcontext = createContext();
@@ -33,34 +34,18 @@ export const PopupProvider = (props) => {
     const copyLinkedInURL = () => {
         navigator.clipboard.writeText(LinkedInURL);
         console.log("angu nangu pangu");
-        setRedirectToLinkedin(true);
-        setTimeout(() => {
-            setRedirectToLinkedin(false);
-        }, 3000);
     }
 
     const copyInstaURL = () => {
         navigator.clipboard.writeText(InstaURL);
-        setRedirectToInstagram(true);
-        setTimeout(() => {
-            setRedirectToInstagram(false);
-        }, 3000);
     }
 
     const copyTwitterURL = () => {
         navigator.clipboard.writeText(TwitterURL);
-        setRedirectToTwitter(true);
-        setTimeout(() => {
-            setRedirectToTwitter(false);
-        }, 3000);
     }
 
     const copyGithubURL = () => {
         navigator.clipboard.writeText(GithubURL);
-        setRedirectToGithub(true);
-        setTimeout(() => {
-            setRedirectToGithub(false);
-        }, 3000);
     }
 
 
@@ -68,24 +53,18 @@ export const PopupProvider = (props) => {
 
     const redirectLinkedInURL = () => {
         location.href = LinkedInURL;
-        setRedirectToTwitter(true);
     }
 
     const redirectInstaURL = () => {
         location.href = InstaURL;
-        setRedirectToInstagram(true);
-
     }
 
     const redirectTwitterURL = () => {
         location.href = TwitterURL;
-        setRedirectToTwitter(true);
-
     }
 
     const redirectGithubURL = () => {
         location.href = GithubURL;
-        setRedirectToTwitter(true);
     }
 
 
@@ -97,7 +76,7 @@ export const PopupProvider = (props) => {
         { image: linkedin, statement: redirectToLinkedin, functioncopy: copyLinkedInURL, functionredirect: redirectLinkedInURL, title: LinkedInURL },
         { image: github, statement: redirectToGithub, functioncopy: copyGithubURL, functionredirect: redirectGithubURL, title: GithubURL },
         { image: instagram, statement: redirectToInstagram, functioncopy: copyInstaURL, functionredirect: redirectInstaURL, title: InstaURL },
-        { image: twitter, statement: redirectToTwitter, functioncopy: copyTwitterURL, functionredirect: redirectTwitterURL, title: TwitterURL }
+        { image: X, statement: redirectToTwitter, functioncopy: copyTwitterURL, functionredirect: redirectTwitterURL, title: TwitterURL }
     ]);
 
 
