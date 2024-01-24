@@ -6,7 +6,9 @@ import { PopupProvider } from './contexts/popupcontext'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
     <PopupProvider>
       <App />
     </PopupProvider>
+  </React.StrictMode>
 )
