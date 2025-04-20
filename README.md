@@ -1,8 +1,19 @@
-# React + Vite
+# LYNKIE
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+LYNKIE is a React-based web application that allows users to manage and share their social media links in an interactive and visually appealing way. The app provides functionality to copy social media profile URLs to the clipboard with a single click and visit the URLs with a double click.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Copy Social Media Links**: Tap once on a social media icon to copy the URL to your clipboard.
+- **Visit Social Media Links**: Tap twice on a social media icon to visit the URL.
+- **Responsive Design**: The app is designed to work seamlessly across different screen sizes.
+- **Modern Tech Stack**: Built with React, Tailwind CSS, and Vite for fast development and performance.
+
+## Tech Stack
+
+- **React**: For building the user interface.
+- **Tailwind CSS**: For styling and responsive design.
+- **Vite**: For fast development and bundling.
+- **ESLint**: For maintaining code quality.
+
+## Project Structure
